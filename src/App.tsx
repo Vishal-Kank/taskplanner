@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 
 function App() {
   return (
-    <Box height={'100vh'} width={'100vw'}>
+    <Box height={'100vh'} width={'100vw'} sx={{backgroundColor: '#EEE'}}>
       <Header />
       <Routes>
         <Route path="/" element={<Dashboard />} />
