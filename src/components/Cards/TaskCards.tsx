@@ -43,11 +43,12 @@ const DetailsButton = styled(Button)({
   width: "90%",
   margin: "auto",
 });
-const CardComponent = (cardProps: cardType) => {
+
+const TaskCards = (cardProps: cardType) => {
   const { id, status, title, date, description } = cardProps;
   return (
     <Card
-      key={id}
+      id={id}
       sx={{
         width: "100%",
         maxWidth: "18rem",
@@ -75,4 +76,4 @@ const CardComponent = (cardProps: cardType) => {
     </Card>
   );
 };
-export default CardComponent;
+export default TaskCards;

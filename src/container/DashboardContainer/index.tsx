@@ -1,10 +1,10 @@
 import { Box, Grid2, Typography, useMediaQuery, useTheme } from "@mui/material";
-import CardComponent from "../../components/Cards/TaskCards";
+import TaskCards from "../../components/Cards/TaskCards";
 
 const DashboardContainer = () => {
   const theme = useTheme();
   const normalScreen = useMediaQuery(theme.breakpoints.up("md"));
-  
+
   return (
     <Grid2 container gap={3}>
       {cardList.map((cardGroup) => (
@@ -27,14 +27,21 @@ const DashboardContainer = () => {
             paddingY={"6px"}
             textAlign={"center"}
             textTransform={"uppercase"}
-            sx={{ backgroundColor: "#FFF" }}
+            fontWeight={500}
             children={cardGroup.type}
+            sx={{
+              background:
+                (cardGroup.type === "open" && "#add8e6") ||
+                (cardGroup.type === "in progress" && "#ffd700") ||
+                "#90ee90",
+            }}
           />
 
           {/* LIST OF TASK IN CARDS */}
           <Box display={"flex"} flexWrap={"wrap"} gap={1} marginTop={2}>
             {cardGroup.list.map((card) => (
-              <CardComponent
+              <TaskCards
+                key={card.id}
                 id={card.id}
                 status={card.status}
                 title={card.title}
