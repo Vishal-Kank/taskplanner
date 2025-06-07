@@ -20,7 +20,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    // Alias
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@container/*": ["container/*"],
+    }
   },
   "include": ["src"]
 }
