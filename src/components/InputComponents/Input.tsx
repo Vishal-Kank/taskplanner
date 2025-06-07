@@ -1,19 +1,26 @@
-import { InputBase, styled } from "@mui/material";
+import React from "react";
+import { InputBase, InputBaseProps, styled } from "@mui/material";
 
-type InputStyledProp = {
-  variant?: "outlined" | "filled" | "standard";
-};
+type CustomVariant = "outlined" | "filled" | "standard";
 
-const Input = styled(InputBase, {
-  shouldForwardProp: (prop) => prop !== "variant",
-})<InputStyledProp>(({ variant }) => ({
+// Extend base props with our own custom variant
+interface CustomInputProps extends InputBaseProps {
+  variant?: CustomVariant;
+}
+
+const InputStyled = styled(InputBase, {
+  shouldForwardProp: (prop) => prop !== "variant", // Prevent variant from reaching DOM
+})<CustomInputProps>(({ variant = "outlined" }) => ({
   border: "none",
   borderRadius: "8px",
   position: "relative",
   padding: "0.2rem 0.8rem",
+  transition: "all 0.3s ease",
+
   "&::before": {
-    display: "none", // remove default underline
+    display: "none",
   },
+
   "&::after": {
     content: '""',
     position: "absolute",
@@ -27,6 +34,7 @@ const Input = styled(InputBase, {
     transition: "transform 0.3s ease-in-out",
     pointerEvents: "none",
   },
+
   "&:focus-within::after": {
     transform: "scaleX(1)",
   },
@@ -35,7 +43,7 @@ const Input = styled(InputBase, {
     border: "2px solid #DDD",
   }),
   ...(variant === "filled" && {
-    background: "#DDD",
+    backgroundColor: "#DDD",
     color: "#000",
   }),
   ...(variant === "standard" && {
@@ -44,5 +52,13 @@ const Input = styled(InputBase, {
     padding: "0.2rem 0",
   }),
 }));
+
+const Input = React.forwardRef<HTMLInputElement, CustomInputProps>(
+  ({ ...props }, ref) => {
+    return <InputStyled {...props} inputRef={ref} />;
+  }
+);
+
+Input.displayName = "Input";
 
 export default Input;
