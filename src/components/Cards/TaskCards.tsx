@@ -1,4 +1,5 @@
 import { Box, Button, Card, styled, Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 
 type cardType = {
   id: string;
@@ -46,6 +47,12 @@ const DetailsButton = styled(Button)({
 
 const TaskCards = (cardProps: cardType) => {
   const { id, status, title, date, description } = cardProps;
+
+  const navigate = useNavigate();
+  const handleDetails = () => {
+    navigate(`/task_details/${id}/${status}`);
+  };
+
   return (
     <Card
       id={id}
@@ -69,7 +76,12 @@ const TaskCards = (cardProps: cardType) => {
 
         <Description children={description} />
 
-        <DetailsButton fullWidth variant={"contained"} size={"small"}>
+        <DetailsButton
+          fullWidth
+          variant={"contained"}
+          size={"small"}
+          onClick={handleDetails}
+        >
           Details
         </DetailsButton>
       </Box>

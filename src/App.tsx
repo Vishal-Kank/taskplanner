@@ -8,17 +8,24 @@ import { Box } from "@mui/material";
 
 function App() {
   return (
+    // NEED TO CREATE LAYOUT HERE..........
     <Box
       height={"100vh"}
       width={"100vw"}
       sx={{ backgroundColor: "#EEE", overflowY: "auto" }}
     >
       <Header />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        {/*http://localhost:3000/task_details/123*/}
-        <Route path="/task_details/:taskID" element={<TaskDetails />} />
-      </Routes>
+
+      <Box padding={"16px 24px"}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          {/*http://localhost:3000/task_details/123*/}
+          <Route
+            path="/task_details/:taskID/:status"
+            element={<TaskDetails />}
+          />
+        </Routes>
+      </Box>
       {/* <Footer /> */}
     </Box>
   );
