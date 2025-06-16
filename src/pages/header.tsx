@@ -2,8 +2,13 @@ import { Box, Typography } from "@mui/material";
 import Share from "../container/Share";
 import Profile from "../container/Profile";
 import Search from "../container/Search";
+import { useNavigate } from "react-router";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const handleHomeRedirect = () => {
+    navigate("/");
+  };
   return (
     <Box
       padding={"16px 24px"}
@@ -14,7 +19,11 @@ const Header = () => {
       gap={4}
       sx={{ backgroundColor: "#FFF" }}
     >
-      <Typography variant={"h4"} flex={1}>
+      <Typography
+        sx={{ fontSize: "1rem", cursor: "pointer" }}
+        flex={1}
+        onClick={handleHomeRedirect}
+      >
         Task Planner
       </Typography>
 

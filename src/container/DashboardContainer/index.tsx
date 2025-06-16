@@ -1,6 +1,6 @@
 import { Box, Grid2, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TaskCards from "../../components/Cards/TaskCards";
-import { cardList, CardListType } from "../../api/data";
+import { cardList, CardListType } from '@api/data';
 
 const DashboardContainer = () => {
   const theme = useTheme();

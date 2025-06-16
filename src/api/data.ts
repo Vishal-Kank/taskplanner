@@ -73,3 +73,21 @@ export const cardList: CardListType[] = [
     ],
   },
 ];
+
+export type CardDetailsType = {
+  date: string;
+  status: string;
+  title: string;
+  description: string;
+  imgURL: string;
+  attachmentsURL: string;
+};
+export const cardDetails: CardDetailsType = {
+  date: "10/June/2025",
+  status: "in progress",
+  title: "Create data model for Card List",
+  description:
+    "creating a dummy details for a given task to replicate mostly all the required functionalities and test them.",
+  imgURL: "",
+  attachmentsURL: "",
+};
