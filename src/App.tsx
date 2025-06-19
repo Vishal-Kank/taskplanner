@@ -1,6 +1,6 @@
-// import { lazy } from "react";
+import { lazy } from "react";
 // import { Route, Routes } from "react-router";
-// const Dashboard = lazy(() => import("./pages/dashboard"));
+const DashboardPage = lazy(() => import("./pages/dashboard"));
 // const Header = lazy(() => import("./pages/header"));
 // // import Footer from "./pages/footer";
 // const TaskDetails = lazy(() => import("./pages/task_details"));
@@ -264,9 +264,25 @@ const Layout = () => {
   );
 };
 
-const DashboardPage = () => <Typography variant="h4">Dashboard</Typography>;
+// const DashboardPage = () => <Typography variant="h4">Dashboard</Typography>;
 const UpcomingTask = () => <Typography variant="h4">Upcoming Task</Typography>;
 const CreateTask = () => <Typography variant="h4">Create Task</Typography>;
+
+const NotFoundPage = () => (
+  <Box sx={{ mt: 10, textAlign: "center" }}>
+    <Typography variant="h3" color="error" gutterBottom>
+      404 - Page Not Found
+    </Typography>
+    <Typography variant="body1">
+      The page you're looking for doesn't exist.
+    </Typography>
+    <Box sx={{ mt: 3 }}>
+      <button onClick={() => (window.location.href = "/dashboard")}>
+        Go to Dashboard
+      </button>
+    </Box>
+  </Box>
+);
 
 const Login = () => {
   const { login } = useAuth();
@@ -314,9 +330,10 @@ export default function App() {
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/upcomingtask" element={<UpcomingTask />} />
                 <Route path="/createtask" element={<CreateTask />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Route>
             </Route>
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         </AuthProvider>
       </ThemeProvider>

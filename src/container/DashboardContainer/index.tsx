@@ -1,4 +1,4 @@
-import { Box, Grid2, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TaskCards from "../../components/Cards/TaskCards";
 import { cardList, CardListType } from '@api/data';
 
@@ -9,9 +9,9 @@ const DashboardContainer = () => {
   const cardListData: CardListType[] = cardList;
 
   return (
-    <Grid2 container gap={3}>
+    <Grid container gap={3}>
       {cardListData.map((cardGroup: CardListType) => (
-        <Grid2
+        <Grid
           key={cardGroup.type}
           size={
             (normalScreen && "grow") || {
@@ -53,9 +53,9 @@ const DashboardContainer = () => {
               />
             ))}
           </Box>
-        </Grid2>
+        </Grid>
       ))}
-    </Grid2>
+    </Grid>
   );
 };
 
